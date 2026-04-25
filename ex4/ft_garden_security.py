@@ -3,10 +3,10 @@
 #                                                      :::      ::::::::    #
 #  ft_garden_security.py                             :+:      :+:    :+:    #
 #                                                  +:+ +:+         +:+      #
-#  By: maratojo <maratojo@student.42antananari   +#+  +:+       +#+         #
+#  By: maratojo <maratojo@student.42.fr>         +#+  +:+       +#+         #
 #                                              +#+#+#+#+#+   +#+            #
 #  Created: 2026/03/25 20:12:32 by maratojo        #+#    #+#               #
-#  Updated: 2026/03/25 20:12:39 by maratojo        ###   ########.fr        #
+#  Updated: 2026/04/25 09:38:43 by maratojo        ###   ########.fr        #
 #                                                                           #
 # ************************************************************************* #
 
