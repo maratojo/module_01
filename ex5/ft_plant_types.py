@@ -6,7 +6,7 @@
 #  By: maratojo <maratojo@student.42.fr>         +#+  +:+       +#+         #
 #                                              +#+#+#+#+#+   +#+            #
 #  Created: 2026/04/12 15:06:00 by maratojo        #+#    #+#               #
-#  Updated: 2026/04/25 14:47:49 by maratojo        ###   ########.fr        #
+#  Updated: 2026/04/25 14:53:37 by maratojo        ###   ########.fr        #
 #                                                                           #
 # ************************************************************************* #
 class Plant:
@@ -73,4 +73,8 @@ class Vegetable(Plant):
 
 if __name__ == "__main__":
     print ("=== Garden Plant Types ===")
-    print ()
+    rose = Plant("Rose", 15.0, 10)
+    oak = Plant("Oak", 200.0, 365)
+    Tomato = Plant("Tomato", 5.0, 10)
+    print(f"=== Flower")
+
