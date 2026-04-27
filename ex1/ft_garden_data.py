@@ -3,10 +3,10 @@
 #                                                      :::      ::::::::    #
 #  ft_garden_data.py                                 :+:      :+:    :+:    #
 #                                                  +:+ +:+         +:+      #
-#  By: maratojo <maratojo@student.42antananari   +#+  +:+       +#+         #
+#  By: maratojo <maratojo@student.42.fr>         +#+  +:+       +#+         #
 #                                              +#+#+#+#+#+   +#+            #
 #  Created: 2026/03/25 19:51:58 by maratojo        #+#    #+#               #
-#  Updated: 2026/03/25 19:52:09 by maratojo        ###   ########.fr        #
+#  Updated: 2026/04/27 14:43:35 by maratojo        ###   ########.fr        #
 #                                                                           #
 # ************************************************************************* #
 
@@ -14,7 +14,7 @@ class Plant:
     name: str
     height: int
     age: int
-
+SHOW
 
 if __name__ == "__main__":
     rose = Plant()
