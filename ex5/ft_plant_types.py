@@ -6,7 +6,7 @@
 #  By: maratojo <maratojo@student.42.fr>         +#+  +:+       +#+         #
 #                                              +#+#+#+#+#+   +#+            #
 #  Created: 2026/04/12 15:06:00 by maratojo        #+#    #+#               #
-#  Updated: 2026/04/25 14:53:37 by maratojo        ###   ########.fr        #
+#  Updated: 2026/04/27 11:54:48 by maratojo        ###   ########.fr        #
 #                                                                           #
 # ************************************************************************* #
 class Plant:
@@ -48,33 +48,50 @@ class Tree(Plant):
 
     def show(self):
         super().show()
-        print(f"Trunk diameter: {self.trunk_diameter} cm")
+        print(f"Trunk diameter: {self.trunk_diameter}cm")
 
 
 class Vegetable(Plant):
-    def __init__(self, name, height, age, harvest_season, nutritional_value):
+    def __init__(self, name, height, age, harvest_season):
         super().__init__(name, height, age)
-        self.nutritional_value = 0
-        self.harvest_season = harvest_season
+        self._nutritional_value = 0
+        self._harvest_season = harvest_season
 
-    def age(self, value):
-        self._age += value
-        self.nutritional_value += value
+    def age(self):
+        self._age += 1
+        self._nutritional_value += 0.5
 
     def grow(self):
-        self._height += 1
-        self.nutritional_value += 1
+        self._height = round(self._height + 2.1, 1)
+        self._nutritional_value += 0.5
 
     def show(self):
         super().show()
-        print(f"Harvest season: {self.harvest_season}")
-        print(f"Nutritional value: {self.nutritional_value}")
+        print(f"Harvest season: {self._harvest_season}")
+        print(f"Nutritional value: {round(self._nutritional_value)}")
+
+    def grow_and_age(self, value: int):
+        for i in range(value):
+            self.grow()
+            self.age()
 
 
 if __name__ == "__main__":
-    print ("=== Garden Plant Types ===")
-    rose = Plant("Rose", 15.0, 10)
-    oak = Plant("Oak", 200.0, 365)
-    Tomato = Plant("Tomato", 5.0, 10)
-    print(f"=== Flower")
-
+    print("=== Garden Plant Types ===")
+    print("=== Flower")
+    rose = Flower("Rose", 15.0, 10, "red")
+    rose.show()
+    print("[asking the rose to bloom]")
+    rose.bloom()
+    rose.show()
+    print("\n=== Tree")
+    oak = Tree("Oak", 200.0, 365, 5.0)
+    oak.show()
+    print("[asking the oak to produce shade]")
+    oak.produce_shade()
+    print("\n=== Vegtable")
+    tomato = Vegetable("Tomato", 5.0, 10, "April")
+    tomato.show()
+    print("[make tomato grow and age for 20 days]")
+    tomato.grow_and_age(20)
+    tomato.show()
