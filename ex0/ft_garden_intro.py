@@ -11,7 +11,7 @@
 # ************************************************************************* #
 
 
-def ft_garden_intro(name: str, heigh: int, age: str):
+def ft_garden_intro(name: str, heigh: int, age: str) -> None:
     print("Plant:", name)
     print(f"Height: {heigh}cm")
     print("Age:", age)

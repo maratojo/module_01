@@ -31,12 +31,18 @@ class Plant:
         self._stats = self.Stats()
 
     @classmethod
-    def creat_anynomuous(cls) -> "Plant":
+    def creat_anynomuous(cls) -> 'Plant':
         return cls("Unknown plant", 0.0, 0)
 
     @staticmethod
-    def more_than_year(age) -> bool:
+    def more_than_year(age: int) -> bool:
         return age > 360
+
+    def get_height(self) -> float:
+        return (self._height)
+
+    def get_age(self) -> float:
+        return (self._age)
 
     def show(self) -> None:
         print(f"{self._name}: {self._height}cm, {self._age} days old")
@@ -52,7 +58,7 @@ class Plant:
 
 
 class Flower(Plant):
-    def __init__(self, name, height, age, color) -> None:
+    def __init__(self, name: str, height: float, age: int, color: str) -> None:
         super().__init__(name, height, age)
         self._color = color
         self.bloomed = False
@@ -70,37 +76,38 @@ class Flower(Plant):
 
 
 class Tree(Plant):
-    def __init__(self, name, height, age, trunk_diameter) -> None:
+    def __init__(self, name: str, height: float,
+                 age: int, trunk_diameter: float) -> None:
         super().__init__(name, height, age)
-        self.trunk_diameter = float(trunk_diameter)
-        self.shade = 0
+        self._trunk_diameter = float(trunk_diameter)
+        self._shade = 0
 
     def produce_shade(self) -> None:
         print(f"Tree {self._name} now produce a shade of {self._height}cm"
-              f" long and {self.trunk_diameter}cm wide.")
-        self.shade += 1
+              f" long and {self._trunk_diameter}cm wide.")
+        self._shade += 1
 
     def show(self) -> None:
         super().show()
-        print(f"Trunk diameter: {self.trunk_diameter}cm")
+        print(f"Trunk diameter: {self._trunk_diameter}cm")
 
     def statistic_tree(self) -> None:
         self._stats.displays()
-        print(f" {self.shade} shade ")
+        print(f" {self._shade} shade ")
 
 
 class Seed(Flower):
-    def __init__(self, name, height, age, color) -> None:
+    def __init__(self, name: str, height: float, age: int, color: str) -> None:
         super().__init__(name, height, age, color)
-        self.seed_count = 0
+        self._seed_count = 0
 
     def bloom(self) -> None:
         super().bloom()
-        self.seed_count = 42
+        self._seed_count = 42
 
     def show(self) -> None:
         super().show()
-        print(f" Seeds: {self.seed_count}")
+        print(f" Seeds: {self._seed_count}")
 
 
 def display_stats(plant: Plant) -> None:

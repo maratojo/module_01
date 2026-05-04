@@ -15,8 +15,14 @@ class Plant:
         self._height = height
         self._age = age
 
-    def show(self):
+    def show(self) -> None:
         print(f"{self._name}: {self._height}cm, {self._age} days old")
+
+    def get_height(self) -> float:
+        return (self._height)
+
+    def get_age(self) -> float:
+        return (self._age)
 
 
 class Flower(Plant):
@@ -25,10 +31,10 @@ class Flower(Plant):
         self.color = color
         self.bloomed = False
 
-    def bloom(self):
+    def bloom(self) -> None:
         self.bloomed = True
 
-    def show(self):
+    def show(self) -> None:
         super().show()
         print(f"Color: {self.color}")
         if self.bloomed:
@@ -38,39 +44,41 @@ class Flower(Plant):
 
 
 class Tree(Plant):
-    def __init__(self, name, height, age, trunk_diameter):
+    def __init__(self, name: str, height: float,
+                 age: int, trunk_diameter: float):
         super().__init__(name, height, age)
-        self.trunk_diameter = trunk_diameter
+        self._trunk_diameter = trunk_diameter
 
-    def produce_shade(self):
+    def produce_shade(self) -> None:
         print(f"Tree {self._name} now produce a shade of {self._height}cm"
-              f" long and {self.trunk_diameter}cm wide.")
+              f" long and {self._trunk_diameter}cm wide.")
 
-    def show(self):
+    def show(self) -> None:
         super().show()
-        print(f"Trunk diameter: {self.trunk_diameter}cm")
+        print(f"Trunk diameter: {self._trunk_diameter}cm")
 
 
 class Vegetable(Plant):
-    def __init__(self, name, height, age, harvest_season):
+    def __init__(self, name: str, height: float,
+                 age: int, harvest_season: str):
         super().__init__(name, height, age)
-        self._nutritional_value = 0
+        self._nutritional_value = 0.0
         self._harvest_season = harvest_season
 
-    def age(self):
+    def age(self) -> None:
         self._age += 1
         self._nutritional_value += 0.5
 
-    def grow(self):
+    def grow(self) -> None:
         self._height = round(self._height + 2.1, 1)
         self._nutritional_value += 0.5
 
-    def show(self):
+    def show(self) -> None:
         super().show()
         print(f"Harvest season: {self._harvest_season}")
         print(f"Nutritional value: {round(self._nutritional_value)}")
 
-    def grow_and_age(self, value: int):
+    def grow_and_age(self, value: int) -> None:
         for i in range(value):
             self.grow()
             self.age()
