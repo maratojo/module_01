@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 # ************************************************************************* #
 #                                                                           #
 #                                                      :::      ::::::::    #
@@ -6,7 +7,7 @@
 #  By: maratojo <maratojo@student.42.fr>         +#+  +:+       +#+         #
 #                                              +#+#+#+#+#+   +#+            #
 #  Created: 2026/03/25 19:57:47 by maratojo        #+#    #+#               #
-#  Updated: 2026/04/27 14:44:16 by maratojo        ###   ########.fr        #
+#  Updated: 2026/05/05 08:56:30 by maratojo        ###   ########.fr        #
 #                                                                           #
 # ************************************************************************* #
 
@@ -14,17 +15,17 @@ class Plant:
     def __init__(self, name: str, height: float, age: int):
         self.name = name
         self.height = height
-        self.Age = age
+        self.ag = age
 
     def grow(self) -> None:
         self.height = round(self.height + 0.8, 1)
 
     def age(self) -> None:
-        self.Age += 1
+        self.ag += 1
 
     def show(self) -> None:
-        print(f"Created: {self.name}: {round(self.height, 1)}cm,"
-              f"{self.Age} days old")
+        print(f"{self.name}: {round(self.height, 1)}cm, "
+              f"{self.ag} days old")
 
 
 if __name__ == "__main__":
@@ -38,4 +39,5 @@ if __name__ == "__main__":
     print("=== Plant Factory Output ===")
     for i in range(len(plants)):
         plant = plants[i]
+        print("Created:", end=" ")
         plant.show()

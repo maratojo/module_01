@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 # ************************************************************************* #
 #                                                                           #
 #                                                      :::      ::::::::    #
@@ -11,7 +12,7 @@
 # ************************************************************************* #
 
 class Plant:
-    def __init__(self, name: str, height: float, age: int):
+    def __init__(self, name: str, height: float, age: int) -> None:
         self._name = name
         self._height = 0.0
         self._age = 0
@@ -47,18 +48,19 @@ class Plant:
             print(f"Age updated: {age} days")
 
     def show(self) -> None:
-        print(f"Plant created: {self._name}: "
+        print(f"{self._name}: "
               f"{self._height}cm, {self._age} days old")
 
 
 if __name__ == "__main__":
     print("=== Garden Security System ===")
     rose = Plant("Rose", 15.0, 10)
+    print("Plant created:", end=" ")
     rose.show()
     rose.set_height(-25)
     rose.set_height(20)
     rose.set_age(32)
     rose.set_age(-30)
     print(
-        f"Current state: {rose._name}: {rose.get_height()}cm, "
+        f"\nCurrent state: {rose._name}: {rose.get_height()}cm, "
         f"{rose.get_age()} days old")

@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 # ************************************************************************* #
 #                                                                           #
 #                                                      :::      ::::::::    #
@@ -26,17 +27,28 @@ class Plant:
 
     def __init__(self, name: str, height: float, age: int) -> None:
         self._name = name
-        self._height = height
-        self._age = age
+        self._height = 0.0
+        self._age = 0
         self._stats = self.Stats()
+        if height < 0:
+            print(f"{self._name}: Error, height can't be negative")
+        else:
+            self._height = round(height, 1)
+        if age < 0:
+            print(f"{self._name}: Error, age can't be negative")
+        else:
+            self._age = age
 
     @classmethod
-    def creat_anynomuous(cls) -> 'Plant':
+    def create_anynomuous(cls) -> 'Plant':
         return cls("Unknown plant", 0.0, 0)
 
     @staticmethod
-    def more_than_year(age: int) -> bool:
-        return age > 360
+    def older_than_year(age: int) -> bool:
+        return age > 365
+
+    def display_stats(self) -> None:
+        self._stats.displays()
 
     def get_height(self) -> float:
         return (self._height)
@@ -61,15 +73,15 @@ class Flower(Plant):
     def __init__(self, name: str, height: float, age: int, color: str) -> None:
         super().__init__(name, height, age)
         self._color = color
-        self.bloomed = False
+        self._bloomed = False
 
     def bloom(self) -> None:
-        self.bloomed = True
+        self._bloomed = True
 
     def show(self) -> None:
         super().show()
         print(f"Color: {self._color}")
-        if self.bloomed:
+        if self._bloomed:
             print(f"{self._name} is blooming beautifully!")
         else:
             print(f"{self._name} has not bloomed yet")
@@ -83,7 +95,7 @@ class Tree(Plant):
         self._shade = 0
 
     def produce_shade(self) -> None:
-        print(f"Tree {self._name} now produce a shade of {self._height}cm"
+        print(f"Tree {self._name} now produces a shade of {self._height}cm"
               f" long and {self._trunk_diameter}cm wide.")
         self._shade += 1
 
@@ -92,8 +104,8 @@ class Tree(Plant):
         print(f"Trunk diameter: {self._trunk_diameter}cm")
 
     def statistic_tree(self) -> None:
-        self._stats.displays()
-        print(f" {self._shade} shade ")
+        super().display_stats()
+        print(f" {self._shade} shade")
 
 
 class Seed(Flower):
@@ -110,8 +122,8 @@ class Seed(Flower):
         print(f" Seeds: {self._seed_count}")
 
 
-def display_stats(plant: Plant) -> None:
-    plant._stats.displays()
+def display_statistics(plant: Plant) -> None:
+    plant.display_stats()
 
 
 if __name__ == "__main__":
@@ -120,18 +132,18 @@ if __name__ == "__main__":
     ages = [30, 400]
     for i in range(2):
         print(f"Is {ages[i]} days more than a year? -> "
-              f"{Plant.more_than_year(ages[i])}")
+              f"{Plant.older_than_year(ages[i])}")
     print("\n=== Flower")
     rose = Flower("Rose", 15.0, 10, "red")
     rose.show()
     print(f"[statistics for {rose._name}]")
-    display_stats(rose)
+    display_statistics(rose)
     print("[asking the rose to bloom]")
     rose.bloom()
     rose.grow(8.0)
     rose.show()
     print(f"[statistics for {rose._name}]")
-    display_stats(rose)
+    display_statistics(rose)
 
     print("\n=== Tree")
     oak = Tree("Oak", 200.0, 365, 5.0)
@@ -152,9 +164,9 @@ if __name__ == "__main__":
     sunflower.grow(30.0)
     sunflower.show()
     print(f"[statistics for {sunflower._name}]")
-    sunflower._stats.displays()
+    sunflower.display_stats()
     print("\n=== Anonymous")
-    plant = Plant.creat_anynomuous()
+    plant = Plant.create_anynomuous()
     plant.show()
     print("[statistics for Unknown plant]")
-    display_stats(plant)
+    display_statistics(plant)
